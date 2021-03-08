@@ -1,0 +1,145 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .image img{
+    height: 90px;
+    width: 90px;
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-heading{
+    margin-bottom: 25px;
+}
+
+.order-heading h2{
+    font-weight: 700;
+}
+   
+  .item{
+      display: flex;
+      align-items: center;
+     justify-content: center;
+     width: 100%;
+     justify-content: space-between;
+  }
+
+  .input{
+      width: 30px;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      border: none;
+      text-decoration: none;
+      background:  rgba(245, 222, 179, 0.041);
+  }
+
+  .plus{
+    font-weight: 600;
+    font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      text-align: center;
+      text-decoration: none; 
+      outline: none;
+      margin-right: 15px;
+      border: 2px solid black;
+      background: rgb(250, 215, 150)
+  }
+
+  .minus{
+
+    font-weight: 600;
+    font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      margin-left: 15px;
+      border: 2px solid black;
+      background: rgb(250, 215, 150)
+  }
+
+  .shopping-cart{
+      border-bottom: 2px solid rgba(0, 0, 0, 0.295);
+      margin-top: 2px;
+      background-color:  rgba(245, 222, 179, 0.479);
+      border-radius: 20px;
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+  }
+
+
+  
+
+ .fa-trash{
+     margin-right: 50px;
+     font-size: larger;
+     cursor: pointer;
+ }
+
+ .fa-trash:hover{
+     color: crimson;
+     margin-bottom: 5px;
+ }
+
+  .quantity{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      text-decoration: none;
+      border-radius: 2px;
+      outline: none;
+  }
+
+
+  .quantity input{
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+
+  @media only screen and (max-width:600px){
+      .shopping-cart .item{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          justify-content: space-between;
+      }
+
+      .image img{
+          height: 50px;
+          width: 50px;
+      }
+
+     .quantity{
+         margin-left: 20px;
+         margin-right: 20px;
+     }
+
+     .fa-trash{
+        margin-left: 20px;
+        margin-right: 20px;
+     }
+  }
+ 

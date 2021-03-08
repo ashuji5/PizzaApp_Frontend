@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.steps{
+    margin-top: 120px;
+    border-bottom: 4px solid black;
+}
+
+.hero{
+    background-image: url('../image/Weather.jpg');
+    height: calc(100vh - 68px);
+    width: 100;
+    background-size: cover;
+}
+
+.f-text{
+    color: rgb(255, 38, 0);
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+
+
+
+
+.icons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.icons img{
+    height: 60px;
+}
+
+.icons h4{
+    font-weight: bolder;
+    font-size: 30px;
+}
+
