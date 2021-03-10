@@ -4,6 +4,8 @@ import booking from '../image/online-booking.svg';
 import calories from '../image/calories.svg';
 import delivery from '../image/delivery-man.svg';
 import tray from '../image/tray.svg';
+import hero from '../image/hero-pizza.png';
+import {Link}  from 'react-router-dom';
 import Products from '../Product/Products';
 
 
@@ -15,9 +17,23 @@ const Menu = () => {
     return (
         <>
         
-            <div className="hero">
+       
+            <div className=" container-fluid hero ">
 
+                <div className= "hero-heading">
+                  <p>Are You Hungry?</p>
+                  <h1>Don't Wait !!</h1>
+                  <Link to ="/orders">
+                    <div className="hero-btn">
+                  <button className = "btn btn-get-started ">View Orders</button>
+                  </div>
+                  </Link>
+                </div>
+                <div className = "hero-img">
+                  <img className="img-fluid" src =  {hero}   alt = {hero}/>
+                </div>
             </div>
+            
             <div className="container steps">
                 <div className="some-text">
 

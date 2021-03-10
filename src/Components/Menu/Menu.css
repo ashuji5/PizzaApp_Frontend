@@ -13,10 +13,60 @@ body{
 }
 
 .hero{
-    background-image: url('../image/Weather.jpg');
-    height: calc(100vh - 68px);
-    width: 100;
-    background-size: cover;
+    /* background-image: url('../image/hero-pizza.png');
+    /* height: calc(100vh - 68px); */
+    /* height: 200px;
+    width: 200px;
+    background-size: cover; */ 
+    
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.hero-heading p{
+    margin-bottom: -3px;
+}
+
+.hero-btn button{
+    margin-top: 8px;
+    height: 45px;
+    width: 120px;
+    border-radius: 50px;
+    background-color: #ec484e;
+    transition: all ease 0.2s;
+    font-weight: 600;
+    }
+
+    .hero-btn button:hover{
+        width: 130px;
+        background-color: #f13238;
+    }
+
+   
+
+.hero-heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 100px;    
+}
+
+.hero-heading h1{
+    font-weight: bolder;
+    font-size: 2000;
+}
+
+.hero-img{
+
+}
+
+.hero-img img{
+    height: 650px;
+    
 }
 
 .f-text{
@@ -42,5 +92,32 @@ body{
 .icons h4{
     font-weight: bolder;
     font-size: 30px;
+}
+
+@media (min-device-width:765px) and (max-device-width:1024px){
+    .hero{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .hero-img img{
+        height: 350px;
+    }
+
+
+   
+
+    .hero-heading{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 80px;
+    }
+
+    .hero-heading h1{
+        font-size: x-large;
+    }
 }
 

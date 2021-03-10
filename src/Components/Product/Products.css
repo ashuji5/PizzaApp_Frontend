@@ -85,5 +85,6 @@ body{
 }
 
 .product:hover{
-    background-color: rgb(255, 235, 205);
+    background-color: rgb(255, 219, 205);
+    box-shadow: 8px black;
 }
