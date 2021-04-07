@@ -28,7 +28,7 @@ const Navbar = () => {
     <>
       <section id="navigation">
         <nav className="navbar navbar-expand-lg ">
-          <Link to ="/">
+          <Link style={{ textDecoration: 'none' }} to ="/">
           <div className="navbar-brand"><img src={web} alt={web}/><strong >Pizza</strong> </div> 
           </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,17 +39,27 @@ const Navbar = () => {
             <ul className="navbar-nav mx-auto ">
               <div className="links">
                 <li className="nav-item active">
-                  <Link to ="/">
+                  <Link style={{ textDecoration: 'none' }} to ="/">
                   <div className="nav-link">Menu <span class="sr-only">(current)</span></div>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/orders">
+                  <Link style={{ textDecoration: 'none' }} to="/orders">
                   <div className="nav-link">Orders</div>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to = "/cart">
+                  <Link style={{ textDecoration: 'none' }} to="/login">
+                  <div className="nav-link">Login</div>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link style={{ textDecoration: 'none' }} to="/register">
+                  <div className="nav-link">Register</div>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link style={{ textDecoration: 'none' }} to = "/cart">
                   <div className="nav-link cart" ><i className="fas fa-shopping-cart"></i><span>{count}</span></div>
                   </Link>
                 </li>

@@ -22,15 +22,15 @@ function Product( {data}) {
                             </Link>
                             <p className="text-center mx-2">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc</p>
                             <div class="favorite">
-                                <p class="product-price">{data.price}</p>
+                                <p class="product-price">{data.price}$</p>
 
                                 <i class="far fa-heart"></i>
                             </div>
                         </div>
                         <div class="product-controls">
-                            <Link to = "/cart"> <button onClick = {() => dispatch(addToCart(data.id))} class="btn btn-get-started">Order <i class="fas fa-shopping-cart"></i>
+                             <button onClick = {() => dispatch(addToCart(data.id))} class="btn btn-get-started">Order <i class="fas fa-shopping-cart"></i>
                             </button>
-                            </Link>
+                            
                         </div>
                     </div>
                 </div>

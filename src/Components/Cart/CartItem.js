@@ -73,7 +73,7 @@ const CartItem = (data) => {
 
                     </div>
 
-                    <div className="mt-3" ><p>{data.data.price}</p></div>
+                    <div className="mt-3" ><p>{data.data.price}$</p></div>
 
                     <i class="fas fa-trash " onClick={() => dispatch(removeFromCart(data.data.id))} ></i>
 

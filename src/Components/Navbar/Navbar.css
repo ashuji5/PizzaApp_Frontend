@@ -10,10 +10,12 @@
 
 .links{
     display: flex;
-    width: 300px;
+    width: 400px;
     justify-content: space-between;
     margin-left: 250px;
 }
+
+
 
 .links a{
     color: black;

@@ -12,7 +12,7 @@ const inState = {
             heading: 'Pepperoni',
             img: web,
             desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc',
-            price: '12.99$'
+            price: '12.99'
         },
 
         {
@@ -20,7 +20,7 @@ const inState = {
             heading: 'Mexican',
             img: mexican,
             desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc',
-            price: '22.99$'
+            price: '22.99'
         },
 
         {
@@ -28,7 +28,7 @@ const inState = {
             heading: 'Chicken',
             img: chicken,
             desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc',
-            price: '28.99$'
+            price: '28.99'
         },
 
         {
@@ -36,7 +36,7 @@ const inState = {
             heading: 'Cheese',
             img: cheese,
             desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc',
-            price: '15.99$'
+            price: '15.99'
         },
 
         {
@@ -44,7 +44,7 @@ const inState = {
             heading: 'Vegetarian',
             img: vegetarian,
             desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc',
-            price: '12.99$'
+            price: '12.99'
         },
 
         {
@@ -52,7 +52,7 @@ const inState = {
             heading: 'Pepperoni',
             img: web,
             desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc',
-            price: '12.99$'
+            price: '12.99'
         },
 
         {
@@ -60,7 +60,7 @@ const inState = {
             heading: 'Mexican',
             img: mexican,
             desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc',
-            price: '12.99$'
+            price: '12.99'
         },
 
         {
@@ -68,7 +68,7 @@ const inState = {
             heading: 'Cheese',
             img: cheese,
             desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc',
-            price: '12.99$'
+            price: '12.99'
         }
     ],
     
