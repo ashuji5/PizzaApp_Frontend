@@ -1,17 +1,40 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState} from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {signup} from '../../redux/Shopping/authaction';
 
-const Register = () =>{
-    return(
+const Register = () => {
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const inState = {name : "", email : "", password: "", confirmpassword: ""};
+    const[formData, setformData] = useState(inState);
+
+    const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(signup(formData, history));
+    
+    }
+
+    const handleChange = (e) => {
+        setformData({...formData, [e.target.name] : e.target.value})
+    }
+
+
+    return (
         <>
 
             <div className="register">
                 <div className="card col-12 col-lg-4 login-card mt-2 hv-center container login-box">
-                    <form className ="login-form">
+                    <form className="login-form" onSubmit = {handleSubmit}>
                         <div className="form-group text-left">
                             <label htmlFor="exampleInputPassword1">Name</label>
                             <input type="text"
                                 className="form-control"
+                                name = "name"
+                                onChange = {handleChange}
                                 id="name"
                                 placeholder="Enter Name"
                             />
@@ -19,6 +42,8 @@ const Register = () =>{
                         <div className="form-group text-left">
                             <label htmlFor="exampleInputEmail1">E mail</label>
                             <input type="email"
+                                name = "email"
+                                onChange = {handleChange}
                                 className="form-control"
                                 id="email"
                                 aria-describedby="emailHelp"
@@ -29,6 +54,8 @@ const Register = () =>{
                         <div className="form-group text-left">
                             <label htmlFor="exampleInputPassword1">Password</label>
                             <input type="password"
+                                name = "password"
+                                onChange = {handleChange}
                                 className="form-control"
                                 id="password"
                                 placeholder="********"
@@ -37,6 +64,8 @@ const Register = () =>{
                         <div className="form-group text-left">
                             <label htmlFor="exampleInputPassword1">Confirm Password</label>
                             <input type="password"
+                                name = "confirmpassword"
+                                onChange = {handleChange}
                                 className="form-control"
                                 id="confirmPassword"
                                 placeholder="********"
@@ -49,23 +78,23 @@ const Register = () =>{
                             >
                                 Register
                 </button>
-                <Link style={{ textDecoration: 'none' }} to="/login">
+                            <Link style={{ textDecoration: 'none' }} to="/login">
 
-                            <p>Already have an account ?</p>
+                                <p>Already have an account ?</p>
                             </Link>
                         </div>
                     </form>
                     <p className="rights">@2021 Ashu Corp. All rights reserved.</p>
-                    
+
                 </div>
-                
+
 
             </div>
 
         </>
     )
 
-    
+
 }
 
 export default Register;

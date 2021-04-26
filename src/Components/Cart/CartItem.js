@@ -10,7 +10,7 @@ const CartItem = (data) => {
         value = key;
         value++;
         document.getElementById('demo').value = value;
-        dispatch(adjstQty(data.data.id, value));
+        dispatch(adjstQty(data.data._id, value));
         console.log(value);
     }
 
@@ -21,7 +21,7 @@ const CartItem = (data) => {
         if (value > 1) {
             value--;
             document.getElementById('demo').value = value;
-            dispatch(adjstQty(data.data.id, value));
+            dispatch(adjstQty(data.data._id, value));
         }
         console.log(value);
     }
@@ -75,7 +75,7 @@ const CartItem = (data) => {
 
                     <div className="mt-3" ><p>{data.data.price}$</p></div>
 
-                    <i class="fas fa-trash " onClick={() => dispatch(removeFromCart(data.data.id))} ></i>
+                    <i class="fas fa-trash " onClick={() => dispatch(removeFromCart(data.data._id))} ></i>
 
                 </div>
 

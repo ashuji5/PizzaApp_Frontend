@@ -6,11 +6,16 @@ import { useSelector } from 'react-redux';
 
 function Cart() {
 
-    const cart = useSelector(state => state.productreducer.cart);
+    const cart = useSelector(state => state.cartreducer.cart);
     var totalPrice = 0;
+
+    console.log(cart);
+
     cart.map(item => {
         totalPrice = totalPrice + parseFloat(item.price);
     })
+
+ 
 
     console.log(totalPrice);
 

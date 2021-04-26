@@ -7,7 +7,7 @@ import Product from './Product';
 const Products = () => {
 
 
-  const products = useSelector(state => state.productreducer.products);
+  const products = useSelector(state =>  state.productreducer.products);
   console.log(products);
   
 
