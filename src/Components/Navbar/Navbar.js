@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {LOGOUT}  from '../../redux/Shopping/actiontypes';
-
 import '../Navbar/Navbar.css'
 import web from '../image/pizza.svg'
 import {Link, useLocation}  from 'react-router-dom';
@@ -21,10 +20,16 @@ const Navbar = () => {
   useEffect(() => {
     const token = user?.token;
 
+    
     setUser(JSON.parse(localStorage.getItem('profile')));
+  
   },[location]);
 
   console.log(user);
+
+  const logout = () => {
+    dispatch({type : LOGOUT})
+  }
 
   const [count, setCount] = useState(0);
 
@@ -74,7 +79,7 @@ const Navbar = () => {
                 </li> */}
                 <li className="nav-item">
                   <Link style={{ textDecoration: 'none' }} to="/">
-                  <div className="nav-link"  onClick = {dispatch({type : LOGOUT})}>Logout</div>
+                  <div className="nav-link"  onClick = {logout} >Logout</div>
                   </Link>
                 </li>
                 <li className="nav-item">

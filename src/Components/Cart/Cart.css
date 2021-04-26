@@ -196,7 +196,7 @@
 
   .price-btn{
 
-    margin-top: 20px;
+    margin-top: 25px;
     
     background-color: #ED4E53;
     width: 110px;
@@ -206,6 +206,25 @@
     margin-bottom: 34px;
     font-weight: 600;
 
+  }
+
+
+  .log-cont{
+      width: 160px;
+      margin-top: 25px;
+    
+      background-color: #ED4E53;
+
+      border-radius: 25px;
+    /* margin-left: 65px; */
+    transition: all 0.2s;
+    margin-bottom: 34px;
+    font-weight: 600;
+  }
+
+  .log-cont:hover{
+      background-color: #fd2f36;
+      width: 170px;
   }
 
   .price-btn:hover{
