@@ -1,22 +1,57 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Cart.css';
 import emptyCart from '../image/empty-cart.png';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import CartItem from './CartItem';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {createOrder} from '../../redux/Shopping/orderaction';
+import { CLEAR_CART } from '../../redux/Shopping/actiontypes';
 
 function Cart() {
 
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const user = JSON.parse(localStorage.getItem('profile'));
+
+    console.log(user.result._id);
 
     const cart = useSelector(state => state.cartreducer.cart);
     var totalPrice = 0;
 
-    console.log(cart);
+    
 
     cart.map(item => {
         totalPrice = totalPrice + parseFloat(item.price);
     })
+
+
+
+    // Logic of posting an Order
+
+    const inState = {address: "", phone : ""};
+    const[formData, setformData] = useState(inState);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        dispatch(  createOrder(formData, totalPrice, cart, user.result._id));
+        dispatch({type : CLEAR_CART})
+
+        history.push('/orders')
+
+       console.log(formData);
+       console.log(totalPrice);
+       console.log(cart)
+        
+        }
+
+        const handleChange = (e) => {
+            setformData({...formData, [e.target.name] : e.target.value})
+        }
+
+       
+    
 
  
 
@@ -74,22 +109,29 @@ function Cart() {
                             <div>
                                 <h5>Payement : COD</h5>
 
-                                <form className="price-form">
+                                <form className="price-form" onSubmit = {handleSubmit} >
                                     <label ><strong> Address :</strong> </label><br></br>
                                     <input
                                         type="text"
+                                        name = "address"
                                         placeholder="Address"
+                                        onChange = {handleChange}
                                     ></input> <br></br>
                                     <label className="mt-2"><strong> Phone No :</strong></label><br></br>
                                     <input
                                         type="text"
+                                        name = "phone"
+                                        onChange = {handleChange}
                                         placeholder="Phone Number"
                                     >
                                     </input><br></br>
+
+                                    <button className="price-btn btn btn-get-started"  type = "submit"> Order Now </button>
+
+
                                 </form>
 
                                 
-                                <button className="price-btn btn btn-get-started"> Order Now </button>
                                 
 
                             </div>

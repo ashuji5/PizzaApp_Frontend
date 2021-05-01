@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import '../Order/Order.css';
-import { getOrder } from '../../redux/Shopping/orderaction';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getAdminOrder} from '../../redux/Shopping/orderaction';
+import DashboardItem from './DashboardItem'
 
-import OrderItem from '../Order/OrderItme';
-
-function Order() {
+const Dash = () => {
 
 
     const dispatch = useDispatch();
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
 
-    const orders = useSelector(state => state.orderReducer.orders)
+    const adminorders = useSelector(state => state.orderReducer.adminorders)
     const loading = useSelector(state => state.orderReducer.loading);
 
+    console.log(JSON.parse(localStorage.getItem('profile')).result.role);
 
     useEffect(() => {
-        dispatch(getOrder(user.result._id));
+        dispatch(getAdminOrder());
     }, [dispatch]);
 
 
@@ -28,16 +26,16 @@ function Order() {
         )
     }
 
-    if(orders==undefined){
+    if(adminorders==undefined){
         return(
             <div>Loading...</div>
         )
     }
 
-
-    else {
-        return (
-            <div className="main-order">
+   else{
+    return(
+        <>
+        <div className="main-order">
                 <h2>Orders</h2>
                 <div className="o-table">
                     <table class="styled-table">
@@ -47,6 +45,7 @@ function Order() {
                                 <th>Items</th>
                                 <th>Phone</th>
                                 <th>Address</th>
+                                <th>Order-Status</th>
                                 <th>Time</th>
                             </tr>
                         </thead>
@@ -60,8 +59,8 @@ function Order() {
                         <td>5150</td>
                     </tr> */}
 
-                            {orders.map((data, ind) => {
-                                return <OrderItem
+                            {adminorders.map((data, ind) => {
+                                return <DashboardItem
                                     key={ind}
                                     data={data}
                                 />
@@ -71,8 +70,9 @@ function Order() {
                     </table>
                 </div>
             </div>
-        )
-    };
+        </>
+    )
+   }
 }
 
-export default Order
+export default Dash;

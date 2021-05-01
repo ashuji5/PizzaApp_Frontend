@@ -77,6 +77,12 @@ export const cartreducer = (state = {cart : []}, action) => {
                 )
             };
 
+            case actiontypes.CLEAR_CART :
+                return{
+                    ...state,
+                    cart : []
+                };
+
             default : 
             return state
     }

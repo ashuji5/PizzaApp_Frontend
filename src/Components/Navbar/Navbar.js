@@ -83,6 +83,11 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link style={{ textDecoration: 'none' }} to="/dashboard">
+                  <div className="nav-link"   >Dashboard</div>
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link style={{ textDecoration: 'none' }} to = "/cart">
                   <div className="nav-link cart" ><i className="fas fa-shopping-cart"></i><span>{count}</span></div>
                   </Link>

@@ -7,7 +7,7 @@ import Menu from './Components/Menu/Menu';
 import Order from './Components/Order/Order';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
-
+import Dash from './Components/Dashboard/Dash'
 import Cart from './Components/Cart/Cart';
 import Navbar from './Components/Navbar/Navbar';
 
@@ -48,10 +48,12 @@ const App = () => {
    <div>
    <Navbar/>
    <Route exact path ="/" component={Menu}/>
-   <Route  path ="/orders" component = {Order}/>
+   <Route  path ="/orders" component = {Order
+  }/>
    <Route path ="/cart" component ={Cart}/>
    <Route path ="/login" component ={Login}/>
-   <Route path ="/register" component ={Register}/>   
+   <Route path ="/register" component ={Register}/> 
+   <Route path ="/dashboard" component = {Dash}/>  
    <Redirect to ="/"/>
    </div>
    </BrowserRouter>

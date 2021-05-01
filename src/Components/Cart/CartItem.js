@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFromCart, adjstQty } from '../../redux/Shopping/productaction';
 
 const CartItem = (data) => {
+
+    //let p = data.data.price;
+
+    const [price, setPrice] = useState(data.data.price);
+    const t = data.data.price;
 
     const increment = () => {
         var value = parseInt(document.getElementById('demo').value);
@@ -12,6 +17,8 @@ const CartItem = (data) => {
         document.getElementById('demo').value = value;
         dispatch(adjstQty(data.data._id, value));
         console.log(value);
+        setPrice(price*value);
+       // console.log(p);
     }
 
     const decrement = () => {
@@ -22,6 +29,8 @@ const CartItem = (data) => {
             value--;
             document.getElementById('demo').value = value;
             dispatch(adjstQty(data.data._id, value));
+           // p = value*p;
+           setPrice( price*value);
         }
         console.log(value);
     }
@@ -73,7 +82,7 @@ const CartItem = (data) => {
 
                     </div>
 
-                    <div className="mt-3" ><p>{data.data.price}$</p></div>
+                    <div className="mt-3" ><p>{price}$</p></div>
 
                     <i class="fas fa-trash " onClick={() => dispatch(removeFromCart(data.data._id))} ></i>
 
