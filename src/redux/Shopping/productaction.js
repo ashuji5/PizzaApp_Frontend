@@ -79,16 +79,16 @@ export const addToCart = (actionID) => async(dispatch, getState) =>{
    
 };
 
-export const removeFromCart = (actionID) => (dispatch, getState) => {
+export const removeFromCart = (actionID) => async(dispatch, getState) => {
 
-    dispatch({
+   await dispatch({
         type : actiontypes.REMOVE,
         payload : {
             id : actionID
         }
     })
 
-    //localStorage.setItem("cart", JSON.stringify(getState.cartreducer.cart));
+    localStorage.setItem("cart", JSON.stringify(getState().cartreducer.cart));
 };
 
 export const adjstQty = (actionID, value) => (dispatch) => {

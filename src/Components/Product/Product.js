@@ -1,29 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { addToCart } from '../../redux/Shopping/productaction';
-import web from '../../Components/image/pizzap.png';
-import mexican from '../../Components/image/mexican.png';
-import chicken from '../../Components/image/chicken.png';
-import cheese from '../../Components/image/cheese.png';
-import vegetarian from '../../Components/image/vegetarian.png';
-import { getProductDetails } from '../../redux/Shopping/productaction'
-import { useSelector } from 'react-redux';
+
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getByTitle } from '@testing-library/dom';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Product({ data }) {
 
- 
- const dispatch = useDispatch();    
+
+    const dispatch = useDispatch();
 
 
 
-const getIt = (id) => {
-    dispatch(addToCart(data._id))
-}
- 
- 
+
+
+
+    const getIt = (id) => {
+
+        // const dev = document.querySelectorAll('.cart-button');
+        // console.log(dev);
+
+        // dev.forEach((e) =>{
+        //     e.classList.add('clicked');
+        // })
+
+
+        toast.warn(`🛒 Added to the Cart`,{
+            position: "top-right",
+            hideProgressBar: true,
+            autoClose: 2000,
+
+        })
+        dispatch(addToCart(data._id))
+
+
+        // dev.forEach((e) =>{
+        //     e.classList.remove('clicked');
+        // })
+
+    }
+
+
     return (
         <>
             <div className=" product-group col-lg-3 col-md-4 col-12">
@@ -43,7 +62,8 @@ const getIt = (id) => {
                             </div>
                         </div>
                         <div class="product-controls">
-                            <button onClick = {() => getIt(data._id)} class="btn btn-get-started">Order <i class="fas fa-shopping-cart"></i>
+                            <button onClick={() => getIt(data._id)} className=" cart-button btn btn-get-started "><span className="text">Add to cart       <i class="fas fa-shopping-cart"></i>
+                            </span>
                             </button>
 
                         </div>
@@ -51,9 +71,14 @@ const getIt = (id) => {
                 </div>
 
             </div>
+
+            <ToastContainer 
+            
+            />
+
         </>
     )
-                        
+
 }
 
 export default Product;

@@ -16,8 +16,7 @@ const CartItem = (data) => {
         value++;
         document.getElementById('demo').value = value;
         dispatch(adjstQty(data.data._id, value));
-        console.log(value);
-        setPrice(price*value);
+        
        // console.log(p);
     }
 
@@ -29,8 +28,7 @@ const CartItem = (data) => {
             value--;
             document.getElementById('demo').value = value;
             dispatch(adjstQty(data.data._id, value));
-           // p = value*p;
-           setPrice( price*value);
+           
         }
         console.log(value);
     }

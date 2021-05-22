@@ -10,6 +10,8 @@ import Register from './Components/Register/Register';
 import Dash from './Components/Dashboard/Dash'
 import Cart from './Components/Cart/Cart';
 import Navbar from './Components/Navbar/Navbar';
+import SingleProduct from './Components/SingleProduct/Single';
+import StatusPage from './Components/StatusPage/StatusPage';
 
 const App = () => {
 
@@ -54,6 +56,8 @@ const App = () => {
    <Route path ="/login" component ={Login}/>
    <Route path ="/register" component ={Register}/> 
    <Route path ="/dashboard" component = {Dash}/>  
+   <Route path = "/details/:id" component = {SingleProduct} />
+   <Route path = "/status/:id" component = {StatusPage} />
    <Redirect to ="/"/>
    </div>
    </BrowserRouter>

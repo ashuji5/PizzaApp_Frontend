@@ -1,11 +1,11 @@
 import {POST_ORDER, GET_ORDER_FAIL, GET_ORDER_REQUEST, GET_ORDER_SUCCESS,GET_ADMIN_ORDER_FAIL,GET_ADMIN_ORDER_REQUEST, GET_ADMIN_ORDER_SUCCESS} from './actiontypes';
-import {postOrder, gettingOrder, getAdminDash} from '../../api';
+import {postOrder, gettingOrder, getAdminDash, updateStatus} from '../../api';
 
 export const createOrder = (FormData, price, cart, user) => async(dispatch) =>{
 
     try {
 
-        console.log("Yep entered")
+       // console.log("Yep entered")
         //const mprice = {"price" : price};
         const tprice = JSON.parse(JSON.stringify({"price" : price}));
        // console.log( tprice);
@@ -89,6 +89,31 @@ export const getAdminOrder = () => async(dispatch) => {
             type : GET_ADMIN_ORDER_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         });
+
+    }
+   
+};
+
+export const updateStatu = (order, status) => async(dispatch) => {
+
+    
+
+    try {
+
+        const data = JSON.parse(JSON.stringify({
+            "order" : order,
+            "status" : status
+        }))
+
+        console.log("Reached this part");
+         await updateStatus(data);
+        console.log("Not this")
+        
+        
+       
+    } catch (error) {
+        
+       console.log(error);
 
     }
    

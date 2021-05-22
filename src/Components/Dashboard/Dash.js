@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAdminOrder} from '../../redux/Shopping/orderaction';
 import DashboardItem from './DashboardItem'
+import openSocket from 'socket.io-client';
+
 
 const Dash = () => {
 
@@ -10,14 +12,62 @@ const Dash = () => {
 
 
 
+  console.log('Dash page')
     const adminorders = useSelector(state => state.orderReducer.adminorders)
+    let[allOrder, setAllOrder] = useState(true)
+
+  
+    
+    
+        
+    
+
     const loading = useSelector(state => state.orderReducer.loading);
 
     console.log(JSON.parse(localStorage.getItem('profile')).result.role);
 
+
+    let connectionOptions = {
+        "force new connection": true,
+        "reconnectionAttempts": "Infinity",
+        "timeout": 10000,
+        "transports": ["websocket"]
+    };
+
+    let v = 0;
+    const socket = openSocket('http://localhost:5000', connectionOptions);
+    socket.emit('join', 'adminRoom')
+
+    console.log('gettingit')
+   
+    socket.on('orderPlaced', (data) =>{
+        
+
+        console.log('Dash Socket');
+        
+        console.log(allOrder);
+
+        v=1;
+
+
+         console.log(allOrder)
+        if(adminorders){
+         adminorders.unshift(data);
+        }
+    setAllOrder(allOrder = !allOrder);
+
+    console.log(allOrder)
+
+        
+    })
+  
+    
+
+    console.log('Lind')
     useEffect(() => {
         dispatch(getAdminOrder());
-    }, [dispatch]);
+        
+    }, [dispatch, allOrder]);
 
 
     if (loading === true) {
@@ -26,13 +76,17 @@ const Dash = () => {
         )
     }
 
-    if(adminorders==undefined){
+    if(adminorders==undefined ){
         return(
             <div>Loading...</div>
         )
     }
 
    else{
+
+   
+   
+
     return(
         <>
         <div className="main-order">

@@ -19,3 +19,5 @@ export const signUp = (formData) => API.post('/user/signup', formData);
 export const postOrder = (data) => API.post('/orders', data);
 export const gettingOrder = (id) => API.post('/orders/user',  id);
 export const getAdminDash = () => API.get('/dashboard');
+export const updateStatus = (data) => API.post('/orders/status', data);
+export const getStatus = (id) => API.get(`/status/${id}`);

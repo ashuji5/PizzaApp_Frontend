@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './Cart.css';
 import emptyCart from '../image/empty-cart.png';
 import {Link, useHistory} from 'react-router-dom';
@@ -13,16 +13,22 @@ function Cart() {
     const history = useHistory();
 
     const user = JSON.parse(localStorage.getItem('profile'));
+   // console.log(carting)
 
     console.log(user.result._id);
 
     const cart = useSelector(state => state.cartreducer.cart);
-    var totalPrice = 0;
+  // const cart = JSON.parse(localStorage.getItem('cart'));
 
+    var totalPrice = 0;
+ 
+    useEffect(() =>{
+
+    },[cart])
     
 
     cart.map(item => {
-        totalPrice = totalPrice + parseFloat(item.price);
+        totalPrice = totalPrice + parseFloat(item.price)*item.qty;
     })
 
 

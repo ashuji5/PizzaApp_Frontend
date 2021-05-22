@@ -1,17 +1,24 @@
 import DashboardMenu from '../Dashboard/DashboardMenu'
 import moment from 'moment';
 import Select from 'react-select';
+import {useDispatch} from 'react-redux';
+import {updateStatu} from '../../redux/Shopping/orderaction'
 const DashboardItem = (data) => {
+
+    const dispatch = useDispatch();
 
     const status = [
         { label: "Order_placed", value : "Order_placed" },
-        { label: "Making", value: "Making" },
-        { label: "Out for delivery", value: "Out for delivery"  },
-        { label: "Delivered", value: "Delivered" }
+        { label: "confirmed", value: "confirmed" },
+        { label: "prepared", value: "prepared"  },
+        { label: "delivered", value: "delivered" },
+        { label: "completed", value: "completed" }
       ];
 
-      const getIt =  (e) =>{
-           console.log(e.value);
+      const updateIt =  (e) =>{
+
+        dispatch(updateStatu(data.data._id, e.value));
+           
       }
     
     
@@ -37,7 +44,7 @@ const DashboardItem = (data) => {
                 }</td>
                 <td>{data.data.phone}</td>
                 <td>{data.data.address}</td>
-                <td>  <Select onChange = {getIt} 
+                <td>  <Select onChange = {updateIt} 
                 defaultValue =  { status.find((e) => {
                    return e.label == data.data.status
                 })}

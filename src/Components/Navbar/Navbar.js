@@ -1,159 +1,172 @@
-import React, {useState, useEffect} from 'react';
-import {LOGOUT}  from '../../redux/Shopping/actiontypes';
+import React, { useState, useEffect } from 'react';
+import { LOGOUT } from '../../redux/Shopping/actiontypes';
 import '../Navbar/Navbar.css'
+import CloseMenu from '../image/cross-sign.png';
+import MenuIcon from '../image/hamburger.svg';
 import web from '../image/pizza.svg'
-import {Link, useLocation}  from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import Cart from '../Cart/Cart';
 
 
 const Navbar = () => {
 
   const dispatch = useDispatch();
   const location = useLocation();
- 
+
+  //const cart = JSON.parse(localStorage.getItem('cart'));
   const cart = useSelector(state => state.cartreducer.cart);
-  console.log(cart);
+
+
+  //console.log(cart);
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
+  const [isMoblie, setIsMoblie] = useState(true);
 
   useEffect(() => {
     const token = user?.token;
 
-    
+
     setUser(JSON.parse(localStorage.getItem('profile')));
-  
-  },[location]);
+
+  }, [location]);
 
   console.log(user);
 
-  const logout = () => {
-    dispatch({type : LOGOUT})
-  }
+
 
   const [count, setCount] = useState(0);
+
 
   useEffect(() => {
 
     let inCount = 0;
-    cart.forEach((item) => {
-      inCount += item.qty;
-    });
+    if (cart) {
+      cart.forEach((item) => {
+        inCount += item.qty;
+      });
+    }
 
     setCount(inCount);
 
-  },[count, cart])
+  }, [count, cart])
 
 
-  if(user?.token){
-    return(
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+
+
+  const logout = () => {
+
+    setClick(false);
+    dispatch({ type: LOGOUT })
+  }
+
+
+  if (user?.token) {
+    return (
 
       <>
 
-<section id="navigation">
-        <nav className="navbar navbar-expand-lg ">
-          <Link style={{ textDecoration: 'none' }} to ="/">
-          <div className="navbar-brand"><img src={web} alt={web}/><strong >Pizza</strong> </div> 
-          </Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+        <div className="header">
+          <div className="logo-nav">
+            <div className="logo-container">
+              <Link className="logo-text" style={{ textDecoration: 'none' }} to="/">
+                <img src={web} className="logo" alt={web} />
+               Pizza
+              </Link>
+            </div>
 
-          <div className="  collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mx-auto ">
-              <div className="links">
-                <li className="nav-item active">
-                  <Link style={{ textDecoration: 'none' }} to ="/">
-                  <div className="nav-link">Menu <span class="sr-only">(current)</span></div>
-                  </Link>
+            <div className="navu-links">
+              <ul className={click ? "nav-options active" : "nav-options"}>
+                <li className="option" onClick={closeMobileMenu}>
+                  <Link style={{ textDecoration: 'none' }} to="/">Menu</Link>
                 </li>
-                <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to="/orders">
-                  <div className="nav-link">Orders</div>
-                  </Link>
+                <li className="option" onClick={closeMobileMenu}>
+                  <Link style={{ textDecoration: 'none' }} to="/orders" >Orders</Link>
                 </li>
-                {/* <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to="/login">
-                  <div className="nav-link">Login</div>
-                  </Link>
-                </li> */}
-                <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to="/">
-                  <div className="nav-link"  onClick = {logout} >Logout</div>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to="/dashboard">
-                  <div className="nav-link"   >Dashboard</div>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to = "/cart">
-                  <div className="nav-link cart" ><i className="fas fa-shopping-cart"></i><span>{count}</span></div>
-                  </Link>
-                </li>
-              </div>
-            </ul>
 
+                <li className="option" onClick={closeMobileMenu}>
+                  <Link style={{ textDecoration: 'none' }} to="/dashboard">Dashboard</Link>
+                </li>
+
+                <li className="option" onClick={logout}>
+                  <Link style={{ textDecoration: 'none' }} to="/">Logout</Link>
+                </li>
+
+                <li className="optio " onClick={closeMobileMenu}>
+                  <Link className="cart-link" style={{ textDecoration: 'none' }} to="/cart"><div className="cart-icon" ><i className=" fas fa-shopping-cart"></i><span>{count}</span> </div> </Link>
+                </li>
+
+              </ul>
+            </div>
           </div>
-        </nav>
-      </section>
 
+          <div className="mobile-menu" onClick={handleClick}>
+            {click ? (
+              <img src={CloseMenu} className="menu-icon" />
+            ) : (
+              <img src={MenuIcon} className="menu-icon" />
+            )}
+          </div>
+        </div>
       </>
     )
   }
 
 
 
-  else{
-  
-  return (
-    <>
-      <section id="navigation">
-        <nav className="navbar navbar-expand-lg ">
-          <Link style={{ textDecoration: 'none' }} to ="/">
-          <div className="navbar-brand"><img src={web} alt={web}/><strong >Pizza</strong> </div> 
-          </Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+  else {
 
-          <div className="  collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mx-auto ">
-              <div className="links">
-                <li className="nav-item active">
-                  <Link style={{ textDecoration: 'none' }} to ="/">
-                  <div className="nav-link">Menu <span class="sr-only">(current)</span></div>
-                  </Link>
-                </li>
-                {/* <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to="/orders">
-                  <div className="nav-link">Orders</div>
-                  </Link>
-                </li> */}
-                 <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to="/login">
-                  <div className="nav-link">Login</div>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to="/register">
-                  <div className="nav-link">Register</div>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link style={{ textDecoration: 'none' }} to = "/cart">
-                  <div className="nav-link cart" ><i className="fas fa-shopping-cart"></i><span>{count}</span></div>
-                  </Link>
-                </li>
-              </div>
-            </ul>
+    return (
+      <>
 
+        <div className="header">
+          <div className="logo-nav">
+            <div className="logo-container">
+              <Link className="logo-text" style={{ textDecoration: 'none' }} to="/">
+                <img src={web} className="logo" alt={web} />
+               Pizza
+              </Link>
+            </div>
+
+            <div className="navu-links">
+              <ul className={click ? "nav-options active" : "nav-options"}>
+                <li className="option" onClick={closeMobileMenu}>
+                  <Link style={{ textDecoration: 'none' }} to="/">Menu</Link>
+                </li>
+                <li className="option" onClick={closeMobileMenu}>
+                  <Link style={{ textDecoration: 'none' }} to="/login" >Login</Link>
+                </li>
+
+                <li className="option" onClick={closeMobileMenu}>
+                  <Link style={{ textDecoration: 'none' }} to="/register">Register</Link>
+                </li>
+
+                {/* <li className="option" onClick={logout}>
+                <Link style={{ textDecoration: 'none' }} to ="/">Logout</Link>
+              </li> */}
+
+                <li className="optio" onClick={closeMobileMenu}>
+                  <Link className="cart-link" style={{ textDecoration: 'none' }} to="/cart"><div className="cart-icon" ><i className=" fas fa-shopping-cart"></i><span>{count}</span> </div> </Link>
+                </li>
+
+              </ul>
+            </div>
           </div>
-        </nav>
-      </section>
-    </>
-  )
+
+          <div className="mobile-menu" onClick={handleClick}>
+            {click ? (
+              <img src={CloseMenu} className="menu-icon" />
+            ) : (
+              <img src={MenuIcon} className="menu-icon" />
+            )}
+          </div>
+        </div>
+
+      </>
+    )
 
   }
 }
