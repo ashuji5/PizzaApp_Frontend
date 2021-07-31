@@ -15,7 +15,7 @@ function Cart() {
     const user = JSON.parse(localStorage.getItem('profile'));
    // console.log(carting)
 
-    console.log(user.result._id);
+    
 
     const cart = useSelector(state => state.cartreducer.cart);
   // const cart = JSON.parse(localStorage.getItem('cart'));
@@ -27,9 +27,11 @@ function Cart() {
     },[cart])
     
 
+    if(cart){
     cart.map(item => {
         totalPrice = totalPrice + parseFloat(item.price)*item.qty;
     })
+}
 
 
 
@@ -64,7 +66,7 @@ function Cart() {
     console.log(totalPrice);
 
     if(user){
-    if (cart.length == 0) {
+    if (cart==null||cart.length ==0) {
         return (
             <>
                 <div className=" empty-page ">
@@ -158,7 +160,7 @@ function Cart() {
 else{
 
 
-    if (cart.length == 0) {
+    if (cart==null || cart.length == 0) {
         return (
             <>
                 <div className=" empty-page ">

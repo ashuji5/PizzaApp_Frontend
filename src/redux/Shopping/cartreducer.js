@@ -1,7 +1,7 @@
 import * as actiontypes from './actiontypes';
 import { useSelector } from 'react-redux'
 
-export const cartreducer = (state = {cart :  JSON.parse(localStorage.getItem('cart'))}, action) => {
+export const cartreducer = (state = {cart :  JSON.parse(localStorage.getItem('cart'))  ? JSON.parse(localStorage.getItem('cart')) : [] }, action) => {
 
    // const products = useSelector(state.productreducer.products);
 
